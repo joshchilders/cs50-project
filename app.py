@@ -1,6 +1,6 @@
 import sqlite3
 
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
 
@@ -65,7 +65,26 @@ def item():
     for row in rows:
         items.append({"plastic": row[0], "run": row[1], "weight": row[2], "price": row[3], "image": row[4]})
 
+    # Get all plastic types
+    cursor.execute("SELECT DISTINCT plastic FROM inventory WHERE name = ?", [item])
+    rows = cursor.fetchall()
+    plastics = []
+    for row in rows:
+        plastics.append(row[0])
+
+    # Get all runs
+    cursor.execute("SELECT DISTINCT run FROM inventory WHERE name = ?", [item])
+    rows = cursor.fetchall()
+    runs = []
+    for row in rows:
+        runs.append(row[0])
+    
+    # Get item title
+    cursor.execute("SELECT brand FROM inventory WHERE name = ?", [item])
+    row = cursor.fetchone()
+    title = row[0] + " " + item
+
     # Close database connection
     connection.close()
 
-    return render_template("item.html", items=items)
+    return render_template("item.html", items=items, plastics=plastics, runs=runs, title=title)

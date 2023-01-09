@@ -41,7 +41,7 @@
 		<section class="disc-row">
 			<div class="row">
 				{% for disc in new_releases %}
-					<div class="card" style="width: 18rem;">
+					<div class="card no-border" style="width: 18rem;">
 						<form action="/item" method="get">
 							<input name="item" type="hidden" value="{{ disc['name'] }}">
 							<button type="submit"><img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="..."></button>
@@ -62,7 +62,7 @@
 			<div class="row">
 				<h4>Speed</h4>
 				<div class="btn-group btn-speed" role="group" aria-label="Basic checkbox toggle button group">
-					<input type="checkbox" class="btn-check" id="btn-speed1" ="1" autocomplete="off">
+					<input type="checkbox" class="btn-check" id="btn-speed1" autocomplete="off">
 					<label class="btn btn-outline-primary" for="btn-speed1">1</label>
 				
 					<input type="checkbox" class="btn-check" id="btn-speed2" autocomplete="off">
@@ -170,8 +170,8 @@
 					<input type="checkbox" class="btn-check" id="btn-fade2" autocomplete="off">
 					<label class="btn btn-outline-primary" for="btn-fade2">2</label>
 
-					<input type="checkbox" class="btn-check" id="btn-fade4" autocomplete="off">
-					<label class="btn btn-outline-primary" for="btn-fade4">3</label>
+					<input type="checkbox" class="btn-check" id="btn-fade3" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btn-fade3">3</label>
 				
 					<input type="checkbox" class="btn-check" id="btn-fade4" autocomplete="off">
 					<label class="btn btn-outline-primary" for="btn-fade4">4</label>
@@ -346,7 +346,7 @@
 		<section class="disc-row">
 			<div class="row">
 				{% for disc in new_releases %}
-					<div class="card" style="width: 18rem;">
+					<div class="card no-border" style="width: 18rem;">
 						<a href="#"><img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">{{ disc["plastic"] }} {{ disc["name"] }}</h5>
@@ -361,37 +361,37 @@
 	<div class="section color-background" id="team-profiles">
 		<h1>Team Profiles</h1>
 		<div class="row">
-			<div class="card" style="width: 18rem;">
+			<div class="card no-border" style="width: 18rem;">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card" style="width: 18rem;">
+			<div class="card no-border" style="width: 18rem;">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card" style="width: 18rem;">
+			<div class="card no-border" style="width: 18rem;">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card" style="width: 18rem;">
+			<div class="card no-border" style="width: 18rem;">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card" style="width: 18rem;">
+			<div class="card no-border" style="width: 18rem;">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card" style="width: 18rem;">
+			<div class="card no-border" style="width: 18rem;">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -405,7 +405,7 @@
 		<section class="disc-row">
 			<div class="row">
 				{% for disc in new_releases %}
-					<div class="card" style="width: 18rem;">
+					<div class="card no-border" style="width: 18rem;">
 						<a href="#"><img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">{{ disc["plastic"] }} {{ disc["name"] }}</h5>

@@ -27,20 +27,20 @@
             <div class="dropdowns">
                 <select class="form-select" id="plastic" aria-label="Default select example">
                     <option selected>Select Plastic</option>
-                    <option value="1">Champion</option>
-                    <option value="2">DX</option>
-                    <option value="3">Star</option>
+                    {% for plastic in plastics %}
+                        <option value="{{ plastic }}">{{ plastic }}</option>
+                    {% endfor %}
                 </select>
                 <select class="form-select" id="run" aria-label="Default select example">
                     <option selected>Select Run</option>
-                    <option value="1">Run #1</option>
-                    <option value="2">Run #2</option>
-                    <option value="3">Tour Series</option>
+                    {% for run in runs %}
+                        <option value="{{ plastic }}">Run #{{ run }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>
         <div class="description">
-            <h1>Title (e.g. Discraft Buzzz)</h1>
+            <h1>{{ title }}</h1>
             <h3> * * * * * 184 reviews</h3>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -68,29 +68,25 @@
     <hr>
 
     <div class="section white-background item-table">
-        <table class="table table-bordered align-middle center-text"">
-            <thead>
-                <tr>
-                    <td>Image</td>
-                    <td>Plastic</td>
-                    <td>Run</td>
-                    <td>Weight</td>
-                    <td>Price</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-                {% for disc in items %}
-                    <tr>
-                        <td><img src="{{ disc['image'] }}" alt="..."></td>
-                        <td>{{ disc["plastic"] }}</td>
-                        <td>{{ disc["run"] }}</td>
-                        <td>{{ disc["weight"] }}</td>
-                        <td>{{ disc["price"] }}</td>
-                        <td class="align-middle">Add to Cart</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <section class="disc-row">
+			<div class="row">
+				{% for disc in items %}
+                    <div class="card center-text" style="width: 18rem;">
+                        <div class="card-header">
+                            <img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush fs-5">
+                                <li class="list-group-item">{{ disc["plastic"] }}</li>
+                                <li class="list-group-item">Run #{{ disc["run"] }}</li>
+                                <li class="list-group-item">{{ disc["weight"] }}g</li>
+                                <li class="list-group-item">${{ disc["price"] }}</li>
+                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                            </ul>
+                        </div>
+                    </div>
+				{% endfor %}
+			</div>
+		</section>
     </div>
 {% endblock %}
