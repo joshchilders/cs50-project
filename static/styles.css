@@ -50,8 +50,12 @@ hr {
 .navbar-nav {
     font-size: large;
     margin-left: auto;
-    margin-right: 25px;
+    margin-right: 0;
     margin-top: 10px;
+}
+
+.navbar form {
+    margin-left: 20px;
 }
 
 .dropdown-toggle {
@@ -63,8 +67,13 @@ hr {
 }
 
 .section {
-    margin: 0 150px;
     padding: 50px 0;
+}
+
+@media (min-width: 1000px) {
+    .section {
+        margin: 0 150px;
+    }
 }
 
 .white-background {
@@ -109,12 +118,18 @@ hr {
     padding-top: 50px;
 }
 
+#team-profiles {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
 #team-profiles h1 {
     padding-bottom: 75px;
     padding-top: 20px;
 }
 
 #team-profiles .card {
+    width: 20rem;
     padding-top: 10px;
 }
 
@@ -123,6 +138,7 @@ hr {
 }
 
 .card {
+    width: 10rem;
     margin: 20px auto;
 }
 
