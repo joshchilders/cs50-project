@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search: {{ type }}
+{% endblock %}
+
+{% block main %}
+    <div class="section color-background" id="search-heading">
+        <h1>{{ type }}s</h1>
+    </div>
+
+    <div class="section white-background" id="search-results">
+        <section class="disc-row">
+			<div class="row">
+				{% for disc in results %}
+					<div class="card no-border">
+						<form action="/item" method="get">
+							<input name="item" type="hidden" value="{{ disc['name'] }}">
+							<button type="submit"><img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="..."></button>
+						</form>
+						<div class="card-body">
+							<h6 class="card-title">{{ disc["brand"] }} {{ disc["name"] }}</h6>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+    </div>
+{% endblock %}
