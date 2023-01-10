@@ -18,7 +18,7 @@
         <section class="disc-row">
 			<div class="row">
 				{% for disc in results %}
-					<div class="card no-border" style="width: 18rem;">
+					<div class="card no-border">
 						<form action="/item" method="get">
 							<input name="item" type="hidden" value="{{ disc['name'] }}">
 							<button type="submit"><img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="..."></button>

@@ -41,7 +41,7 @@
 		<section class="disc-row">
 			<div class="row">
 				{% for disc in new_releases %}
-					<div class="card no-border" style="width: 18rem;">
+					<div class="card no-border">
 						<form action="/item" method="get">
 							<input name="item" type="hidden" value="{{ disc['name'] }}">
 							<button type="submit"><img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="..."></button>
@@ -192,7 +192,7 @@
 		<div class="search-by-flight-results">
 			<div class="row">
 				<div class="col">
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<a href="#"><img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">Firebird</h5>
@@ -216,7 +216,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<a href="#"><img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">Thunderbird</h5>
@@ -240,7 +240,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<a href="#"><img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">Firebird</h5>
@@ -266,7 +266,7 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<a href="#"><img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">Teebird</h5>
@@ -290,7 +290,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<a href="#"><img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">Aviar</h5>
@@ -314,7 +314,7 @@
 					</div>
 				</div>
 				<div class="col">
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<a href="#"><img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">Firebird</h5>
@@ -346,7 +346,7 @@
 		<section class="disc-row">
 			<div class="row">
 				{% for disc in new_releases %}
-					<div class="card no-border" style="width: 18rem;">
+					<div class="card no-border">
 						<a href="#"><img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">{{ disc["plastic"] }} {{ disc["name"] }}</h5>
@@ -361,37 +361,37 @@
 	<div class="section color-background" id="team-profiles">
 		<h1>Team Profiles</h1>
 		<div class="row">
-			<div class="card no-border" style="width: 18rem;">
+			<div class="card no-border">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" style="width: 18rem;">
+			<div class="card no-border">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" style="width: 18rem;">
+			<div class="card no-border">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" style="width: 18rem;">
+			<div class="card no-border">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" style="width: 18rem;">
+			<div class="card no-border">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" style="width: 18rem;">
+			<div class="card no-border">
 				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -405,7 +405,7 @@
 		<section class="disc-row">
 			<div class="row">
 				{% for disc in new_releases %}
-					<div class="card no-border" style="width: 18rem;">
+					<div class="card no-border">
 						<a href="#"><img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="..."></a>
 						<div class="card-body">
 							<h5 class="card-title">{{ disc["plastic"] }} {{ disc["name"] }}</h5>

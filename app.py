@@ -88,3 +88,47 @@ def item():
     connection.close()
 
     return render_template("item.html", items=items, plastics=plastics, runs=runs, title=title)
+
+@app.route("/search-by-type")
+def search_by_type():
+
+    # Get type
+    type = request.args.get("type")
+
+    # Query database for all distance drivers
+    connection = sqlite3.connect("inventory.db")
+    cursor = connection.cursor()
+    cursor.execute("SELECT max(name), brand, speed, glide, turn, fade, image FROM inventory WHERE type = ? GROUP BY name", [type])
+    rows = cursor.fetchall()
+
+    # Organize results into a list
+    results = []
+    for row in rows:
+        results.append({"brand": row[1], "name": row[0], "speed": row[2], "glide": row[3], "turn": row[4], "fade": row[5], "image": row[6]})
+    
+    # Close database connection
+    connection.close()
+
+    return render_template("search-by-type.html", type=type, results=results)
+
+@app.route("/search-by-brand")
+def search_by_brand():
+
+    # Get type
+    brand = request.args.get("brand")
+
+    # Query database for all distance drivers
+    connection = sqlite3.connect("inventory.db")
+    cursor = connection.cursor()
+    cursor.execute("SELECT max(name), speed, glide, turn, fade, image FROM inventory WHERE brand = ? GROUP BY name", [brand])
+    rows = cursor.fetchall()
+
+    # Organize results into a list
+    results = []
+    for row in rows:
+        results.append({"name": row[0], "speed": row[1], "glide": row[2], "turn": row[3], "fade": row[4], "image": row[5]})
+    
+    # Close database connection
+    connection.close()
+
+    return render_template("search-by-brand.html", brand=brand, results=results)
