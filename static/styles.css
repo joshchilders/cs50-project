@@ -195,7 +195,7 @@ hr {
 }
 
 #btn-col {
-    margin-top: 100px;
+    margin-top: 30px;
 }
 
 @media (min-width: 1000px) {
@@ -263,12 +263,17 @@ hr {
 }
 
 .description h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
 .description h4 {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.description h6 {
+    margin-bottom: 30px;
     text-align: center;
 }
 

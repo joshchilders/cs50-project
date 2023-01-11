@@ -20,11 +20,11 @@
 				{% for disc in results %}
 					<div class="card no-border">
 						<form action="/item" method="get">
-							<input name="item" type="hidden" value="{{ disc['name'] }}">
+							<input name="item" type="hidden" value="{{ disc['mold'] }}">
 							<button type="submit"><img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="..."></button>
 						</form>
 						<div class="card-body">
-							<h5 class="card-title">{{ disc["plastic"] }} {{ disc["name"] }}</h5>
+							<h5 class="card-title">{{ disc["plastic"] }} {{ disc["mold"] }}</h5>
 							<p class="card-text">Run #{{ disc["run"] }}</p>
 						</div>
 					</div>
