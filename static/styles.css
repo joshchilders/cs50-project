@@ -198,26 +198,55 @@ hr {
     margin-top: 100px;
 }
 
-.item-header {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    padding-bottom: 40px;
-    padding-top: 20px;
+@media (min-width: 1000px) {
+    .item-header {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        padding-bottom: 40px;
+        padding-top: 20px;
+    }
+
+    .description {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        margin-left: 0;
+        margin-right: 10%;
+    }
+
+    .thumbnail .dropdowns {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 999px) {
+    .item-header {
+        padding-bottom: 40px;
+        padding-top: 20px;
+    }
+
+    .description {
+        margin: 50px auto;
+        width: 80%;
+    }
+
+    .thumbnail .dropdowns {
+        margin-top: 30px;
+    }
 }
 
 .thumbnail {
     margin-top: 50px;
     margin-bottom: 0;
-    margin-left: 300px;
+    margin-left: 0;
     margin-right: 0;
 }
 
 .thumbnail img {
-    width: 500px;
+    width: 69%;
     height: auto;
     display: block;
     margin: auto;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .thumbnail select {
@@ -225,35 +254,22 @@ hr {
     margin: 25px auto;
 }
 
-.thumbnail .dropdowns {
-    margin-top: 60px;
-}
-
 .thumbnail .container {
     width: 50%;
-}
-
-.thumbnail .row {
-    height: 50px;
 }
 
 .thumbnail .flight-numbers {
     padding: auto;
 }
 
-.description {
-    margin-top: 100px;
-    margin-bottom: 50px;
-    margin-left: 0;
-    margin-right: 400px;
-}
-
-.description h1{
+.description h2 {
     margin-bottom: 20px;
+    text-align: center;
 }
 
-.description h3 {
+.description h4 {
     margin-bottom: 50px;
+    text-align: center;
 }
 
 .item-table {

@@ -185,13 +185,13 @@ def item():
     # Query database for all discs with that name
     connection = sqlite3.connect("inventory.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT plastic, run, weight, price, image FROM inventory WHERE name = ? ORDER BY id DESC", [item])
+    cursor.execute("SELECT brand, plastic, run, weight, speed, glide, turn, fade, price, image FROM inventory WHERE name = ? ORDER BY id DESC", [item])
     rows = cursor.fetchall()
 
     # Organize results into a list
     items = []
     for row in rows:
-        items.append({"plastic": row[0], "run": row[1], "weight": row[2], "price": row[3], "image": row[4]})
+        items.append({"brand": row[0], "plastic": row[1], "run": row[2], "weight": row[3], "speed": row[4], "glide": row[5], "turn": row[6], "fade": row[7], "price": row[8], "image": row[9]})
 
     # Get all plastic types
     cursor.execute("SELECT DISTINCT plastic FROM inventory WHERE name = ?", [item])
@@ -262,3 +262,10 @@ def search_by_brand():
     connection.close()
 
     return render_template("search-by-brand.html", brand=brand, results=results)
+
+
+@app.route("/cart")
+def cart():
+
+
+    return render_template("cart.html")
