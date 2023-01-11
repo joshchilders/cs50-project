@@ -27,16 +27,23 @@ def after_request(response):
 @app.route("/")
 def index():
 
-    # Get disc info from database
+    # Load each unique mold in inventory for search-by-flight section
     connection = sqlite3.connect("inventory.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT DISTINCT name, plastic, run, image FROM inventory ORDER BY id DESC LIMIT 12;")
+    cursor.execute("SELECT max(mold), brand, speed, glide, turn, fade, image FROM inventory GROUP BY mold")
+    rows = cursor.fetchall()
+    disc_inventory = []
+    for row in rows:
+        disc_inventory.append({"mold": row[0], "brand": row[1], "speed": row[2], "glide": row[3], "turn": row[4], "fade": row[5], "image": row[6]})
+
+    # Get new release disc info from database
+    cursor.execute("SELECT DISTINCT mold, plastic, run, image FROM inventory ORDER BY id DESC LIMIT 12;")
     rows = cursor.fetchall()
 
     # Organize query results into a list
     new_releases = []
     for row in rows:
-        new_releases.append({"plastic": row[1], "name": row[0], "run": row[2], "image": row[3]})
+        new_releases.append({"plastic": row[1], "mold": row[0], "run": row[2], "image": row[3]})
     
     #Close database connection
     connection.close()
@@ -129,7 +136,7 @@ def register():
 
         # Ensure email does not exist
         if len(rows) != 0:
-            return apology("username already exists")
+            return apology("email already exists")
 
         # Add user to database
         email = request.form.get("email")
@@ -159,7 +166,7 @@ def search():
     # Query database for search value
     connection = sqlite3.connect("inventory.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT DISTINCT name, plastic, run, image FROM inventory WHERE name LIKE ?", [search])
+    cursor.execute("SELECT DISTINCT mold, plastic, run, image FROM inventory WHERE mold LIKE ?", [search])
     rows = cursor.fetchall()
 
     # Get number of results
@@ -168,7 +175,7 @@ def search():
     # Organize query results into a list
     results = []
     for row in rows:
-        results.append({"plastic": row[1], "name": row[0], "run": row[2], "image": row[3]})
+        results.append({"plastic": row[1], "mold": row[0], "run": row[2], "image": row[3]})
     
     # Close database connection
     connection.close()
@@ -185,30 +192,30 @@ def item():
     # Query database for all discs with that name
     connection = sqlite3.connect("inventory.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT brand, plastic, run, weight, speed, glide, turn, fade, price, image FROM inventory WHERE name = ? ORDER BY id DESC", [item])
+    cursor.execute("SELECT brand, plastic, run, weight, type, speed, glide, turn, fade, price, image FROM inventory WHERE mold = ? ORDER BY id DESC", [item])
     rows = cursor.fetchall()
 
     # Organize results into a list
     items = []
     for row in rows:
-        items.append({"brand": row[0], "plastic": row[1], "run": row[2], "weight": row[3], "speed": row[4], "glide": row[5], "turn": row[6], "fade": row[7], "price": row[8], "image": row[9]})
+        items.append({"brand": row[0], "plastic": row[1], "run": row[2], "weight": row[3], "type": row[4], "speed": row[5], "glide": row[6], "turn": row[7], "fade": row[8], "price": row[9], "image": row[10]})
 
     # Get all plastic types
-    cursor.execute("SELECT DISTINCT plastic FROM inventory WHERE name = ?", [item])
+    cursor.execute("SELECT DISTINCT plastic FROM inventory WHERE mold = ?", [item])
     rows = cursor.fetchall()
     plastics = []
     for row in rows:
         plastics.append(row[0])
 
     # Get all runs
-    cursor.execute("SELECT DISTINCT run FROM inventory WHERE name = ?", [item])
+    cursor.execute("SELECT DISTINCT run FROM inventory WHERE mold = ?", [item])
     rows = cursor.fetchall()
     runs = []
     for row in rows:
         runs.append(row[0])
     
     # Get item title
-    cursor.execute("SELECT brand FROM inventory WHERE name = ?", [item])
+    cursor.execute("SELECT brand FROM inventory WHERE mold = ?", [item])
     row = cursor.fetchone()
     title = row[0] + " " + item
 
@@ -227,13 +234,13 @@ def search_by_type():
     # Query database for all distance drivers
     connection = sqlite3.connect("inventory.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT max(name), brand, speed, glide, turn, fade, image FROM inventory WHERE type = ? GROUP BY name", [type])
+    cursor.execute("SELECT max(mold), brand, speed, glide, turn, fade, image FROM inventory WHERE type = ? GROUP BY mold", [type])
     rows = cursor.fetchall()
 
     # Organize results into a list
     results = []
     for row in rows:
-        results.append({"brand": row[1], "name": row[0], "speed": row[2], "glide": row[3], "turn": row[4], "fade": row[5], "image": row[6]})
+        results.append({"brand": row[1], "mold": row[0], "speed": row[2], "glide": row[3], "turn": row[4], "fade": row[5], "image": row[6]})
     
     # Close database connection
     connection.close()
@@ -250,13 +257,13 @@ def search_by_brand():
     # Query database for all distance drivers
     connection = sqlite3.connect("inventory.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT max(name), speed, glide, turn, fade, image FROM inventory WHERE brand = ? GROUP BY name", [brand])
+    cursor.execute("SELECT max(mold), speed, glide, turn, fade, image FROM inventory WHERE brand = ? GROUP BY mold", [brand])
     rows = cursor.fetchall()
 
     # Organize results into a list
     results = []
     for row in rows:
-        results.append({"name": row[0], "speed": row[1], "glide": row[2], "turn": row[3], "fade": row[4], "image": row[5]})
+        results.append({"mold": row[0], "speed": row[1], "glide": row[2], "turn": row[3], "fade": row[4], "image": row[5]})
     
     # Close database connection
     connection.close()
