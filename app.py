@@ -48,7 +48,7 @@ def index():
     #Close database connection
     connection.close()
 
-    return render_template("index.html", new_releases=new_releases)
+    return render_template("index.html", disc_inventory=disc_inventory, new_releases=new_releases)
 
 
 @app.route("/login", methods=["GET", "POST"])

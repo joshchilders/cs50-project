@@ -151,8 +151,12 @@ hr {
     padding-bottom: 25px;
 }
 
+#search-by-flight-form h4 {
+    color: white;
+}
+
 #search-by-flight-form .row {
-    padding: 30px 0;
+    padding: 45px 0;
 }
 
 #search-by-flight-form label {
@@ -161,7 +165,13 @@ hr {
 }
 
 .search-by-flight-results {
-    padding-top: 50px;
+    padding-top: 20px;
+}
+
+.search-by-flight-results .card {
+    color: black;
+    width: 30%;
+    height: auto;
 }
 
 #team-profiles {
