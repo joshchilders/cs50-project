@@ -16,6 +16,7 @@ function updateSearch() {
     updateFade(fade);
 
     // Show/hide results based on search
+    let count = 0;
     for (let i = 0; i < discs.length; i++) {
         let disc = discs[i];
         let disc_speed = parseInt(disc.querySelector('#disc-speed').innerHTML);
@@ -23,7 +24,13 @@ function updateSearch() {
         let disc_turn = parseInt(disc.querySelector('#disc-turn').innerHTML);
         let disc_fade = parseInt(disc.querySelector('#disc-fade').innerHTML);
         if ((speed < 1 || speed == disc_speed) && (glide < 1 || glide == disc_glide) && (turn < -5 || turn == disc_turn) && (fade < 0 || fade == disc_fade)) {
-            disc.style.display = 'block';
+            if (count < 6) {
+                disc.style.display = 'block';
+                count++;
+            }
+            else {
+                disc.style.display = 'none';
+            }
         }
         else {
             disc.style.display = 'none';
