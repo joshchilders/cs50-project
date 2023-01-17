@@ -66,6 +66,52 @@ hr {
     margin-top: 12px;
 }
 
+.card {
+    width: 10rem;
+    margin: 20px auto;
+}
+
+.card button {
+    border: none;
+    background-color: transparent;
+}
+
+.card button:hover {
+    transform: translate(0, -20px);
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-text {
+    color: black;
+}
+
+.disc-row .card {
+    width: 15%;
+    height: auto;
+}
+
+@media (max-width: 1000px) and (min-width: 720px) {
+    .disc-row .card {
+        width: 25%;
+        height: auto;
+    }
+}
+
+@media (max-width: 720px) {
+    .disc-row .card {
+        width: 50%;
+        height: auto;
+    }
+}
+
+.disc-row .card-text {
+    text-align: center;
+    font-style: italic;
+}
+
 .section {
     padding: 50px 0;
 }
@@ -129,40 +175,49 @@ hr {
 }
 
 #team-profiles .card {
-    width: 18%;
+    width: 15%;
+    max-width: 600px;
     height: auto;
     padding-top: 10px;
 }
 
+@media (max-width: 1600px) and (min-width: 1200px) {
+    #team-profiles .card {
+        width: 18%;
+        height: auto;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 1000px) {
+    #team-profiles .card {
+        width: 23%;
+        height: auto;
+    }
+}
+
+@media (max-width: 1000px) and (min-width: 720px) {
+    #team-profiles .card {
+        width: 30%;
+        height: auto;
+    }
+}
+
+@media (max-width: 720px) and (min-width: 500px) {
+    #team-profiles .card {
+        width: 45%;
+        height: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    #team-profiles .card {
+        width: 100%;
+        height: auto;
+    }
+}
+
 #search-heading h3, #search-heading h1 {
     padding-top: 20px;
-}
-
-.card {
-    width: 10rem;
-    margin: 20px auto;
-}
-
-.card button {
-    border: none;
-    background-color: transparent;
-}
-
-.card button:hover {
-    transform: translate(0, -20px);
-}
-
-.card-title {
-    text-align: center;
-}
-
-.card-text {
-    color: black;
-}
-
-.disc-row .card-text {
-    text-align: center;
-    font-style: italic;
 }
 
 .flight-numbers {
@@ -196,6 +251,11 @@ hr {
 
 #btn-col {
     margin-top: 30px;
+}
+
+.item-header {
+    max-width: 1200px;
+    margin: auto;
 }
 
 @media (min-width: 1000px) {
