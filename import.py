@@ -14,7 +14,7 @@ file = open("inventory.csv")
 contents = csv.reader(file)
 
 # SQL query
-insert_records = "INSERT INTO inventory (brand, name, plastic, run, weight, type, speed, glide, turn, fade, price, sold) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)"
+insert_records = "INSERT INTO inventory (brand, mold, plastic, run, weight, type, speed, glide, turn, fade, price, sold) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)"
 
 #Import contents into database
 cursor.executemany(insert_records, contents)
@@ -22,10 +22,6 @@ cursor.executemany(insert_records, contents)
 # SQL query to verify data has been successfully imported
 select_all = "SELECT * FROM inventory"
 rows = cursor.execute(select_all).fetchall()
-
-# Output to console screen
-for r in rows:
-    print(r)
 
 # Commit the changes
 connection.commit()
