@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="dropdowns">
-                <select class="form-select" id="plastic" aria-label="Default select example" onchange="updateItemList()">
+                <select class="form-select" id="plastic" aria-label="Default select example" onchange="updateItemList(); updateRunOptions(runs);">
                     <option selected>All Plastics</option>
                     {% for plastic in plastics %}
                         <option value="{{ plastic }}">{{ plastic }}</option>
@@ -37,16 +37,12 @@
                 </select>
                 <select class="form-select" id="run" aria-label="Default select example">
                     <option selected>All Runs</option>
-                    {% for run in runs %}
-                        <option value="{{ plastic }}">{{ run }}</option>
-                    {% endfor %}
                 </select>
             </div>
         </div>
         <div class="description">
             <h2>{{ title }}</h2>
-            <h4>{{ items[0]["type"] }}</h4>
-            <h6> - - - - - <a href="#">184 reviews</a></h6>
+            <h5>{{ items[0]["type"] }}</h5>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -91,4 +87,8 @@
 			</div>
 		</section>
     </div>
+
+    <script>
+        let runs = JSON.parse('{{ runs | tojson | safe }}');
+    </script>
 {% endblock %}

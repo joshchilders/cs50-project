@@ -102,3 +102,31 @@ function updateItemList() {
         }
     }
 }
+
+function updateRunOptions(runs) {
+    let plastic = document.getElementById('plastic').value;
+    let select = document.getElementById('run');
+
+    if (plastic != 'All Plastics') {
+        // Remove all current options
+        while (select.options.length > 0) {
+            select.remove(0);
+        }
+        let newOption = new Option('All Runs', 'All Runs');
+        select.add(newOption, undefined);
+
+        // Add new appropriate options
+        for (i = 0; i < runs[plastic].length; i++) {
+            let newOption = new Option(runs[plastic][i], runs[plastic][i]);
+            select.add(newOption, undefined);
+        }
+    }
+    else {
+        // Remove all options other than 'All Runs'
+        while (select.options.length > 0) {
+            select.remove(0);
+        }
+        let newOption = new Option('All Runs', 'All Runs');
+        select.add(newOption, undefined);
+    }
+}
