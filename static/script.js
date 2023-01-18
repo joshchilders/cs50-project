@@ -1,3 +1,7 @@
+window.onload = function() {
+    updateSearch();
+}
+
 function updateSearch() {
 
     // Get values from range sliders
