@@ -85,3 +85,20 @@ function updateFade(fade) {
         document.getElementById('fade-output').value = "Any";
     }
 }
+
+function updateItemList() {
+    let plastic = document.getElementById('plastic').value;
+    let items = document.querySelectorAll('#item');
+
+    for (let i = 0; i < items.length; i++) {
+        let item = items[i];
+        let item_plastic = item.querySelector('#item-plastic').innerHTML;
+
+        if (item_plastic == plastic || plastic == 'All Plastics') {
+            item.style.display = 'block';
+        }
+        else {
+            item.style.display = 'none';
+        }
+    }
+}

@@ -29,14 +29,14 @@
                 </div>
             </div>
             <div class="dropdowns">
-                <select class="form-select" id="plastic" aria-label="Default select example">
-                    <option selected>Plastic</option>
+                <select class="form-select" id="plastic" aria-label="Default select example" onchange="updateItemList()">
+                    <option selected>All Plastics</option>
                     {% for plastic in plastics %}
                         <option value="{{ plastic }}">{{ plastic }}</option>
                     {% endfor %}
                 </select>
                 <select class="form-select" id="run" aria-label="Default select example">
-                    <option selected>Run</option>
+                    <option selected>All Runs</option>
                     {% for run in runs %}
                         <option value="{{ plastic }}">{{ run }}</option>
                     {% endfor %}
@@ -69,20 +69,20 @@
         <section class="disc-row">
 			<div class="row">
 				{% for disc in items %}
-                    <div class="card center-text">
+                    <div class="card center-text" id="item">
                         <div class="card-header">
-                            {% if items[0]['image'] is not none %}
-				                <img src="{{ items[0]['image'] }}" class="card-img-top" alt="...">
+                            {% if disc['image'] is not none %}
+				                <img src="{{ disc['image'] }}" class="card-img-top" alt="...">
 			                {% else %}
 				                <img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
 			                {% endif %}
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush fs-5">
-                                <li class="list-group-item fs-6">{{ disc["plastic"] }}</li>
-                                <li class="list-group-item fs-6">{{ disc["run"] }}</li>
-                                <li class="list-group-item fs-6">{{ disc["weight"] }}g</li>
-                                <li class="list-group-item fs-6">${{ disc["price"] }}</li>
+                                <li class="list-group-item fs-6" id="item-plastic">{{ disc["plastic"] }}</li>
+                                <li class="list-group-item fs-6" id="item-run">{{ disc["run"] }}</li>
+                                <li class="list-group-item fs-6" id="item-weight">{{ disc["weight"] }}g</li>
+                                <li class="list-group-item fs-6" id="item-price">${{ disc["price"] }}</li>
                                 <a href="/cart" class="btn btn-primary">Add to Cart</a>
                             </ul>
                         </div>

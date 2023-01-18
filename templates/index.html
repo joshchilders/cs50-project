@@ -46,7 +46,7 @@
 							<input name="item" type="hidden" value="{{ disc['mold'] }}">
 							<button type="submit">
 								{% if disc['image'] is not none %}
-									<img src="{{ disc['image'] }}" class="card-img-top" alt="...">
+									<img src="{{ disc['image'] | default('../static/images/discs/disc-placeholder.jpg') }}" class="card-img-top" alt="...">
 								{% else %}
 									<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
 								{% endif %}
