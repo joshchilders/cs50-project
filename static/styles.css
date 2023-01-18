@@ -89,7 +89,7 @@ hr {
 }
 
 .disc-row .card {
-    width: 15%;
+    width: 16%;
     height: auto;
 }
 
@@ -118,7 +118,7 @@ hr {
 
 @media (min-width: 1000px) {
     .section {
-        margin: 0 150px;
+        margin: 0 75px;
     }
 }
 
@@ -347,17 +347,9 @@ hr {
     text-align: center;
 }
 
-.item-table {
-    margin: auto;
-}
-
-.item-table td {
-    border: 2px solid black;
-}
-
-.item-table img {
-    width: 150px;
-    height: auto;
+#item-list .card {
+    width: 250px;
+    margin: 20px auto;
 }
 
 .login-form {
