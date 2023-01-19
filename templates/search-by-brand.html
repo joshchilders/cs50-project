@@ -10,6 +10,9 @@
     </div>
 
     <div class="section white-background" id="search-results">
+		{% if results|length == 0 %}
+			<img src="../static/images/out-of-stock.jpg" id="out-of-stock-img">
+		{% endif %}
         <section class="disc-row">
 			<div class="row">
 				{% for disc in results %}
@@ -25,7 +28,7 @@
 							</button>
 						</form>
 						<div class="card-body">
-							<h6 class="card-title">{{ disc["mold"] }}</h6>
+							<h5 class="card-title">{{ disc["mold"] }}</h5>
 						</div>
 					</div>
 				{% endfor %}

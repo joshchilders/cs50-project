@@ -29,13 +29,13 @@
                 </div>
             </div>
             <div class="dropdowns">
-                <select class="form-select" id="plastic" aria-label="Default select example" onchange="updateItemList(); updateRunOptions(runs);">
+                <select class="form-select" id="plastic" aria-label="Default select example" onchange="updateRunOptions(runs); updateItemList();">
                     <option selected>All Plastics</option>
                     {% for plastic in plastics %}
                         <option value="{{ plastic }}">{{ plastic }}</option>
                     {% endfor %}
                 </select>
-                <select class="form-select" id="run" aria-label="Default select example">
+                <select class="form-select" id="run" aria-label="Default select example" onchange="updateItemList();">
                     <option selected>All Runs</option>
                 </select>
             </div>

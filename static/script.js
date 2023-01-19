@@ -10,16 +10,21 @@ function updateSearch() {
     let turn = document.getElementById('turn').value;
     let fade = document.getElementById('fade').value;
 
-    // Get all disc cards
-    let discs = document.querySelectorAll('#search-result');
-
     // Update values displayed above range sliders
     updateSpeed(speed);
     updateGlide(glide);
     updateTurn(turn);
     updateFade(fade);
 
-    // Show/hide results based on search
+    // Get all disc cards
+    let discs = document.querySelectorAll('#search-result');
+
+    // Clear current search results
+    for (let i = 0; i < discs.length; i++) {
+        discs[i].style.display = 'none';
+    }
+
+    // Show results based on search
     let count = 0;
     for (let i = 0; i < discs.length; i++) {
         let disc = discs[i];
@@ -29,15 +34,9 @@ function updateSearch() {
         let disc_fade = parseInt(disc.querySelector('#disc-fade').innerHTML);
         if ((speed < 1 || speed == disc_speed) && (glide < 1 || glide == disc_glide) && (turn < -5 || turn == disc_turn) && (fade < 0 || fade == disc_fade)) {
             if (count < 6) {
-                disc.style.display = 'block';
+                fadeIn(disc);
                 count++;
             }
-            else {
-                disc.style.display = 'none';
-            }
-        }
-        else {
-            disc.style.display = 'none';
         }
     }
 }
@@ -88,13 +87,15 @@ function updateFade(fade) {
 
 function updateItemList() {
     let plastic = document.getElementById('plastic').value;
+    let run = document.getElementById('run').value;
     let items = document.querySelectorAll('#item');
 
     for (let i = 0; i < items.length; i++) {
         let item = items[i];
         let item_plastic = item.querySelector('#item-plastic').innerHTML;
+        let item_run = item.querySelector('#item-run').innerHTML;
 
-        if (item_plastic == plastic || plastic == 'All Plastics') {
+        if ((item_plastic == plastic || plastic == 'All Plastics') && (item_run == run || run == 'All Runs')) {
             item.style.display = 'block';
         }
         else {
@@ -129,4 +130,18 @@ function updateRunOptions(runs) {
         let newOption = new Option('All Runs', 'All Runs');
         select.add(newOption, undefined);
     }
+}
+
+function fadeIn(element) {
+    let opacity = 0.1;  // initial opacity
+    element.style.opacity = opacity;
+    element.style.display = 'block';
+    let timer = setInterval(function () {
+        if (opacity >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = opacity;
+        element.style.filter = 'alpha(opacity=' + opacity * 100 + ")";
+        opacity += opacity * 0.1;
+    }, 10);
 }
