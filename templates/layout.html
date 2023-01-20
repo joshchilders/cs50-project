@@ -15,7 +15,7 @@
     <header>	
       	<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
 			<a class="navbar-brand" href="/">NATIVE DISC GOLF</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler" id="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 		  	</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -71,7 +71,7 @@
 						<a class="nav-link" href="#">INFO</a>
 					</li>
 				</ul>
-				<form action="/search" class="row ms-auto" method="get" role="search">
+				<form action="/search" class="row" method="get" role="search">
 					<div class="col">
 						<input autocomplete="off" class="form-control mr-sm-2" id="search-bar" name="search" type="search" placeholder="Search" aria-label="Search">                
 					</div>
@@ -91,6 +91,11 @@
 		</main>
 
 		<footer>
+			<div id="mobile-cart-icon" style="display: none;">
+				<a href="/cart">
+					<img src="../static/images/mobile-shopping-cart.png">
+				</a>
+			</div>
 			<div class="footer-info">
 				<p>&copy Copyright - Josh Childers</p>
 				<p>245 Congaree Rd</p>

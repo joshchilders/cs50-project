@@ -44,8 +44,7 @@ hr {
 
 .navbar-nav {
     font-size: medium;
-    margin-right: 0;
-    margin-left: auto;
+    margin: auto;
 }
 
 #search-icon {
@@ -55,6 +54,23 @@ hr {
 #cart-icon {
     margin-right: 25px;
     margin-left: 10px;
+}
+
+#mobile-cart-icon {
+    width: 64px;
+    height: 64px;
+    padding-top: 16px;
+    text-align: center;
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+#mobile-cart-icon a {
+    width: 50%;
+    height: auto;
 }
 
 .dropdown-toggle {
@@ -69,23 +85,37 @@ hr {
     .dropdown:hover .dropdown-menu {
         display: block;
     }
+
+    #mobile-cart-icon {
+        display: none;
+    }
 }
 
 @media (max-width: 1199px) {
-    .info {
-        margin-left: 20px;
-        margin-bottom: 10px;
+    .navbar-nav .nav-item {
+        margin: auto;
+        text-align: center;
     }
 
-    .dropdown-toggle {
-        margin-left: 20px;
+    .dropdown-menu {
+        margin: auto;
+        text-align: center;
     }
 
     .collapse form {
         width: 100%;
         max-width: 300px;
-        margin-left: 0 !important;
-        padding-left: 5px;
+        margin: auto;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+
+    #cart-icon, #search-icon, .col-auto {
+        display: none;
+    }
+
+    #mobile-cart-icon {
+        display: block;
     }
 }
 
@@ -109,6 +139,11 @@ hr {
 .card button:hover .card-title {
     opacity: 1;
     transition: opacity 0.5s;
+}
+
+.card button:hover img {
+    opacity: 0.6;
+    transition: opacity 0.8s;
 }
 
 .card button {

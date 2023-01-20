@@ -1,3 +1,5 @@
+document.getElementById('navbar-toggler').addEventListener('click', showMobileCartIcon)
+
 window.onload = function() {
     // Get all disc cards
     let discs = document.querySelectorAll('#search-result');
@@ -150,4 +152,15 @@ function fadeIn(element) {
         element.style.filter = 'alpha(opacity=' + opacity * 100 + ")";
         opacity += opacity * 0.1;
     }, 10);
+}
+
+function showMobileCartIcon() {
+    let icon = document.getElementById('mobile-cart-icon');
+    if (icon.style.display == 'none') {
+        icon.style.display = 'block';
+        fadeIn(icon);
+    }
+    else {
+        icon.style.display = 'none';
+    }
 }
