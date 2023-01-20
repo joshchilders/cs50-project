@@ -6,7 +6,11 @@
 
 {% block main %}
     <div class="section color-background" id="search-heading">
-        <h1>{{ type }}s</h1>
+		{% if type == "Approach" %}
+        	<h1>{{ type }} Discs</h1>
+		{% else %}
+			<h1>{{type}}s</h1>
+		{% endif %}
     </div>
 
     <div class="section white-background" id="search-results">
