@@ -1,4 +1,4 @@
-document.getElementById('navbar-toggler').addEventListener('click', showMobileCartIcon)
+document.getElementById('navbar-toggler').addEventListener('click', showMobileCartIcon);
 
 window.onload = function() {
     // Get all disc cards
@@ -18,22 +18,22 @@ function updateSearch() {
     let turn = document.getElementById('turn').value;
     let fade = document.getElementById('fade').value;
 
-    // Update values displayed above range sliders
-    updateSpeed(speed);
-    updateGlide(glide);
-    updateTurn(turn);
-    updateFade(fade);
-
     // Get all disc cards
     let discs = document.querySelectorAll('#search-result');
 
+    // Change form size
+    document.getElementById('search-by-flight-form').style.width = "100%";
+
     // Clear current search results
     for (let i = 0; i < discs.length; i++) {
-        discs[i].style.display = 'none';
+        if (discs[i].style.display == 'block') {
+            discs[i].style.display = 'none';
+        }
     }
 
-    // Show results based on search
+    // Get top 6 results
     let count = 0;
+    let results = [];
     for (let i = 0; i < discs.length; i++) {
         let disc = discs[i];
         let disc_speed = parseInt(disc.querySelector('#disc-speed').innerHTML);
@@ -42,16 +42,29 @@ function updateSearch() {
         let disc_fade = parseInt(disc.querySelector('#disc-fade').innerHTML);
         if ((speed < 1 || speed == disc_speed) && (glide < 1 || glide == disc_glide) && (turn < -5 || turn == disc_turn) && (fade < 0 || fade == disc_fade)) {
             if (count < 6) {
-                fadeIn(disc);
+                results.push(disc)
                 count++;
             }
         }
     }
+
+    // Show results
+    if (results.length > 0) {
+        fadeIn(document.getElementById('sbfr-background'));
+        for (let i = 0; i < results.length; i++) {
+            fadeIn(results[i]);
+        }
+    }
+    else {
+        document.getElementById('sbfr-background').style.display = 'none';
+        document.getElementById('search-by-flight-form').style.width = '200%';
+    }
 }
 
-function updateSpeed(speed) {
+function updateSpeed() {
 
     // Update speed value displayed
+    let speed = document.getElementById('speed').value;
     if (speed > 0) {
         document.getElementById('speed-output').value = speed;
     }
@@ -60,9 +73,10 @@ function updateSpeed(speed) {
     }
 }
 
-function updateGlide(glide) {
+function updateGlide() {
 
     // Update glide value displayed
+    let glide = document.getElementById('glide').value;
     if (glide > 0) {
         document.getElementById('glide-output').value = glide;
     }
@@ -71,9 +85,10 @@ function updateGlide(glide) {
     }
 }
 
-function updateTurn(turn) {
+function updateTurn() {
 
     // Update turn value displayed
+    let turn = document.getElementById('turn').value;
     if (turn > -6) {
         document.getElementById('turn-output').value = turn;
     }
@@ -82,9 +97,10 @@ function updateTurn(turn) {
     }
 }
 
-function updateFade(fade) {
+function updateFade() {
 
     // Update fade value displayed
+    let fade = document.getElementById('fade').value;
     if (fade > -1) {
         document.getElementById('fade-output').value = fade;
     }
@@ -151,7 +167,7 @@ function fadeIn(element) {
         element.style.opacity = opacity;
         element.style.filter = 'alpha(opacity=' + opacity * 100 + ")";
         opacity += opacity * 0.1;
-    }, 10);
+    }, 20);
 }
 
 function showMobileCartIcon() {
