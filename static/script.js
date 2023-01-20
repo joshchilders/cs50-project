@@ -1,5 +1,11 @@
 window.onload = function() {
-    updateSearch();
+    // Get all disc cards
+    let discs = document.querySelectorAll('#search-result');
+
+    // Clear current search results
+    for (let i = 0; i < discs.length; i++) {
+        discs[i].style.display = 'none';
+    }
 }
 
 function updateSearch() {

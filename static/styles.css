@@ -14,8 +14,13 @@ html, body {
     overflow-x: hidden; 
 }
 
+header {
+    font-family: 'Montserrat';
+}
+
 body {
     background-color: #374045;
+    font-family: 'Varta';
 }
 
 .navbar {
@@ -33,112 +38,132 @@ hr {
 
 .navbar-brand {
     font-size: x-large;
+    font-weight: bold;
     padding-left: 20px;
 }
 
 .navbar-nav {
-    font-size: large;
-    margin-left: auto;
+    font-size: medium;
     margin-right: 0;
-}
-
-.navbar form {
-    margin-left: 30px;
+    margin-left: auto;
 }
 
 #search-icon {
-    color: white;
+    margin-left: -20px;
 }
 
 #cart-icon {
-    margin-right: 20px;
-    padding-bottom: 8px;
-    margin-left: -5px;
+    margin-right: 25px;
+    margin-left: 10px;
 }
 
 .dropdown-toggle {
-    margin-right: 20px;
+    margin: 0 10px;
 }
 
 .dropdown-toggle::after {
     content: none;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-@media (max-width: 991px) {
-    .navbar-nav {
-        text-align: center;
-        padding-left: 20px;
-        margin-bottom: 20px;
-    }
-
-    .navbar form {
-        margin-bottom: 20px;
-    }
-
-    .navbar input {
-        text-align: center;
-        width: 200px;
+@media (min-width: 1200px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
     }
 }
 
-.card {
-    width: 10rem;
-    margin: 20px auto;
+@media (max-width: 1199px) {
+    .info {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .dropdown-toggle {
+        margin-left: 20px;
+    }
+
+    .collapse form {
+        width: 100%;
+        max-width: 300px;
+        margin-left: 0 !important;
+        padding-left: 5px;
+    }
 }
 
-.card button {
-    border: none;
-    background-color: transparent;
+.card-body {
+    padding-top: 20px;
+}
+
+.card-body .container {
+    padding-top: 20px;
+    padding-bottom: 22px;
+}
+
+.disc-row {
+    margin: 50px 5%;
 }
 
 .card button:hover {
     transform: translate(0, -20px);
 }
 
-.card-title {
-    text-align: center;
+.card button:hover .card-title {
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 
-.card-text {
-    color: black;
+.card button {
+    border: none;
+    background-color: transparent;
+    transition: transform 0.5s;
+}
+
+.card-title {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 12px black, -2px 2px 12px black, 2px -2px 12px black, -2px -2px 12px black;
 }
 
 .disc-row .card {
-    width: 16%;
+    position: relative;
+    text-align: center;
+    width: 16.5%;
     height: auto;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
-@media (max-width: 1000px) and (min-width: 720px) {
+@media (max-width: 1200px) and (min-width: 850px) {
     .disc-row .card {
         width: 25%;
         height: auto;
     }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 850px) and (min-width: 550px) {
+    .disc-row .card {
+        width: 33.3%;
+        height: auto;
+    }
+}
+
+@media (max-width: 550px) {
     .disc-row .card {
         width: 50%;
         height: auto;
     }
 }
 
-.disc-row .card-text {
-    text-align: center;
-    font-style: italic;
-}
-
 .section {
-    padding: 50px 0;
+    padding-bottom: 50px;
+    padding-top: 80px;
 }
 
-@media (min-width: 1000px) {
-    .section {
-        margin: 0 75px;
-    }
+.section h1 {
+    font-weight: bold;
 }
 
 .white-background {
@@ -193,6 +218,14 @@ hr {
     height: auto;
 }
 
+.search-by-flight-results button:hover {
+    transform: scale(1.05);
+}
+
+.search-by-flight-results .card button {
+    transition: transform 0.5s;
+}
+
 #team-profiles {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -245,6 +278,10 @@ hr {
     }
 }
 
+#search-heading {
+    margin-top: 50px;
+}
+
 #search-heading h3, #search-heading h1 {
     padding-top: 55px;
     margin-bottom: -30px;
@@ -270,15 +307,6 @@ hr {
 .container .flight-numbers:last-of-type {
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
-}
-
-.card-body .container {
-    padding-top: 20px;
-    padding-bottom: 22px;
-}
-
-.disc-row {
-    margin: 50px 7%;
 }
 
 .range {
@@ -324,19 +352,18 @@ hr {
     padding: auto;
 }
 
-.description h2 {
-    margin-bottom: 10px;
+.description h2, .description h5 {
     text-align: center;
+    font-family: 'Montserrat';
+}
+
+.description h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .description h5 {
     margin-bottom: 20px;
-    text-align: center;
-}
-
-.description h6 {
-    margin-bottom: 30px;
-    text-align: center;
 }
 
 @media (min-width: 1101px) {
@@ -405,15 +432,14 @@ hr {
     margin: 20px auto;
 }
 
-.login-form {
-    width: 300px;
-    text-align: center;
-    margin: auto;
-    padding: 50px 0;
+#item-list img:hover {
+    transform: scale(1.5);
 }
 
-.login-form .form-group {
-    padding: 20px 0;
+#item-list img {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s;
 }
 
 .footer-info {

@@ -25,11 +25,9 @@
 								{% else %}
 									<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
 								{% endif %}
+								<p class="card-title">{{ disc["brand"] }} {{ disc["mold"] }}</p>
 							</button>
 						</form>
-						<div class="card-body">
-							<h6 class="card-title">{{ disc["brand"] }} {{ disc["mold"] }}</h6>
-						</div>
 					</div>
 				{% endfor %}
 			</div>

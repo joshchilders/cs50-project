@@ -34,7 +34,7 @@ def index():
         disc_inventory.append({"mold": row[0], "brand": row[1], "speed": row[2], "glide": row[3], "turn": row[4], "fade": row[5], "image": row[6]})
 
     # Get new release disc info from database
-    cursor.execute("SELECT DISTINCT mold, plastic, run, image FROM inventory ORDER BY id DESC LIMIT 12;")
+    cursor.execute("SELECT DISTINCT mold, plastic, run, image FROM inventory ORDER BY id DESC LIMIT 24;")
     rows = cursor.fetchall()
 
     # Organize query results into a list
