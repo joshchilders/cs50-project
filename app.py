@@ -173,7 +173,7 @@ def search_by_brand():
     # Query database for all distance drivers
     connection = sqlite3.connect("inventory.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT max(mold), speed, glide, turn, fade, image FROM inventory WHERE brand = ? GROUP BY mold", [brand])
+    cursor.execute("SELECT max(mold), speed, glide, turn, fade, image FROM inventory WHERE brand = ? AND type != 'Apparel' AND type != 'Accessory' GROUP BY mold", [brand])
     rows = cursor.fetchall()
 
     # Organize results into a list

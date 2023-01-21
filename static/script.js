@@ -22,7 +22,7 @@ function updateSearch() {
     let discs = document.querySelectorAll('#search-result');
 
     // Change form size
-    document.getElementById('search-by-flight-form').style.width = "100%";
+    document.getElementById('search-by-flight-form').style.width = "92%";
 
     // Clear current search results
     for (let i = 0; i < discs.length; i++) {

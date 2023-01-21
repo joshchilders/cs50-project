@@ -119,10 +119,6 @@ hr {
     }
 }
 
-.card-body .container {
-    padding-bottom: 30px;
-}
-
 .card-title {
     padding: 10px 0;
 }
@@ -159,6 +155,14 @@ hr {
     transform: translate(-50%, -50%);
     color: white;
     text-shadow: 2px 2px 12px black, -2px 2px 12px black, 2px -2px 12px black, -2px -2px 12px black;
+}
+
+.hover2 img:hover {
+    transform: translate(0, -20px);
+}
+
+.card img {
+    transition: transform 0.5s;
 }
 
 .disc-row .card {
@@ -216,21 +220,18 @@ hr {
 #search-by-flight {
     display: grid;
     grid-template-columns: 50% 50%;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding: 50px 75px;
 }
 
 #search-by-flight-form {
+    display: block;
+    margin: auto;
+    padding-top: 60px;
+    padding-bottom: 80px;
+    margin-left: 0;
     width: 200%;
-    padding-right: 100px;
-    padding-top: 50px;
-    margin-top: 40px;
     z-index: 2;
     transition: width 1s;
-}
-
-#search-by-flight-form h1 {
-    padding-bottom: 25px;
 }
 
 #search-by-flight-form h4 {
@@ -238,12 +239,11 @@ hr {
 }
 
 #search-by-flight-form .row {
-    padding: 52px 0;
+    padding: 50px 0;
 }
 
-#search-by-flight-form label {
-    border: none;
-    color: black;
+#search-by-flight-form .row:last-of-type {
+    padding-bottom: 0;
 }
 
 #sbfr-background {
@@ -256,12 +256,30 @@ hr {
 
 .search-by-flight-results {
     padding-top: 20px;
+    margin: auto;
 }
 
 .search-by-flight-results .card {
     color: black;
-    width: 30%;
-    height: auto;
+}
+
+#search-result .card-body {
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 1601px) {
+    .search-by-flight-results .card {
+        width: 30%;
+        height: auto;
+    }
+}
+
+@media (max-width: 1600px) {
+    .search-by-flight-results .card {
+        width: 45%;
+        height: auto;
+    }
 }
 
 #team-profiles {
@@ -316,13 +334,16 @@ hr {
     }
 }
 
-#featured-apparel img, #featured-accessories img {
-    width: 300px;
-    height: 300px;
+#featured-apparel .card, #featured-accessories .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#featured-apparel button, #featured-accessories button {
-    
+#featured-apparel img, #featured-accessories img {
+    object-fit: cover;
+    max-width: 300px;
+    max-height: 300px;
 }
 
 #search-heading h3, #search-heading h1 {
@@ -342,6 +363,12 @@ hr {
     background-color: #e1d89f;
 }
 
+.flight-numbers p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
 .container .flight-numbers:first-of-type {
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
@@ -359,6 +386,7 @@ hr {
 
 #btn-col {
     margin-top: 30px;
+    max-width: 500px;
 }
 
 .item-header-background {
