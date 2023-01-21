@@ -68,7 +68,7 @@
 			<h1>Search By Flight</h1>
 			<div class="row">
 				<label for="speed" class="form-label"><h4>Speed: <output id="speed-output">Any</output></h4></label>
-				<input type="range" class="form-range" min="0" max="14" value="0" id="speed" oninput="updateSpeed()" onmouseup="updateSearch()">
+				<input type="range" list="tickmarks" class="form-range" min="0" max="14" value="0" id="speed" oninput="updateSpeed()" onmouseup="updateSearch()">
 			</div>
 			<div class="row">
 				<label for="glide" class="form-label"><h4>Glide: <output id="glide-output">Any</output></h4></label>
@@ -135,26 +135,20 @@
 		<h1>Featured Apparel</h1>
 		<section class="disc-row">
 			<div class="row">
-				{% for disc in new_releases %}
-					{% if loop.index < 13 %}
-						<div class="card no-border">
-							<form action="/item" method="get">
-								<input name="item" type="hidden" value="{{ disc['mold'] }}">
-								<button type="submit">
-									{% if disc['image'] is not none %}
-										<img src="{{ disc['image'] }}" class="card-img-top" alt="...">
-									{% else %}
-										<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
-									{% endif %}
-									{% if disc['run'] == 'Stock' %}
-										<p class="card-title">{{ disc["plastic"] }} {{ disc["mold"] }}</p>
-									{% else %}
-										<p class="card-title">{{ disc["run"] }} {{ disc["plastic"] }} {{ disc["mold"] }}</p>
-									{% endif %}
-								</button>
-							</form>
-						</div>
-					{% endif %}
+				{% for item in new_apparel %}
+					<div class="card no-border">
+						<form action="/item" method="get">
+							<input name="item" type="hidden" value="{{ item['mold'] }}">
+							<button type="submit">
+								{% if item['image'] is not none %}
+									<img src="{{ item['image'] }}" class="card-img-top" alt="...">
+								{% else %}
+									<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
+								{% endif %}
+								<p class="card-title">{{ item["brand"] }} {{ item["mold"] }}</p>
+							</button>
+						</form>
+					</div>
 				{% endfor %}
 			</div>
 		</section>
@@ -206,26 +200,20 @@
 		<h1>Featured Accessories</h1>
 		<section class="disc-row">
 			<div class="row">
-				{% for disc in new_releases %}
-					{% if loop.index < 13 %}
-						<div class="card no-border">
-							<form action="/item" method="get">
-								<input name="item" type="hidden" value="{{ disc['mold'] }}">
-								<button type="submit">
-									{% if disc['image'] is not none %}
-										<img src="{{ disc['image'] }}" class="card-img-top" alt="...">
-									{% else %}
-										<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
-									{% endif %}
-									{% if disc['run'] == 'Stock' %}
-										<p class="card-title">{{ disc["plastic"] }} {{ disc["mold"] }}</p>
-									{% else %}
-										<p class="card-title">{{ disc["run"] }} {{ disc["plastic"] }} {{ disc["mold"] }}</p>
-									{% endif %}
-								</button>
-							</form>
-						</div>
-					{% endif %}
+				{% for item in new_accessories %}
+					<div class="card no-border">
+						<form action="/item" method="get">
+							<input name="item" type="hidden" value="{{ item['mold'] }}">
+							<button type="submit">
+								{% if item['image'] is not none %}
+									<img src="{{ item['image'] }}" class="card-img-top" alt="...">
+								{% else %}
+									<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
+								{% endif %}
+								<p class="card-title">{{ item["run"] }} {{ item["mold"] }}</p>
+							</button>
+						</form>
+					</div>
 				{% endfor %}
 			</div>
 		</section>

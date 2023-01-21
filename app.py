@@ -27,25 +27,47 @@ def index():
     # Load each unique mold in inventory for search-by-flight section
     connection = sqlite3.connect("inventory.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT max(mold), brand, speed, glide, turn, fade, image FROM inventory GROUP BY mold")
+    cursor.execute("SELECT max(mold), brand, speed, glide, turn, fade, image FROM inventory WHERE type != 'Accessory' AND type != 'Apparel' GROUP BY mold;")
     rows = cursor.fetchall()
     disc_inventory = []
     for row in rows:
         disc_inventory.append({"mold": row[0], "brand": row[1], "speed": row[2], "glide": row[3], "turn": row[4], "fade": row[5], "image": row[6]})
+    rows.clear()
 
     # Get new release disc info from database
-    cursor.execute("SELECT DISTINCT mold, plastic, run, image FROM inventory ORDER BY id DESC LIMIT 24;")
+    cursor.execute("SELECT DISTINCT mold, plastic, run, image FROM inventory WHERE type != 'Accessory' AND type != 'Apparel' ORDER BY id DESC LIMIT 24;")
     rows = cursor.fetchall()
-
-    # Organize query results into a list
     new_releases = []
     for row in rows:
+        print("discs")
+        print(row)
         new_releases.append({"plastic": row[1], "mold": row[0], "run": row[2], "image": row[3]})
+    rows.clear()
+    
+    # Get new apparel from database
+    cursor.execute("SELECT DISTINCT brand, mold, image FROM inventory WHERE type = 'Apparel' ORDER BY id DESC LIMIT 12;")
+    rows = cursor.fetchall()
+    new_apparel = []
+    for row in rows:
+        print("apparel")
+        print(row)
+        new_apparel.append({"brand": row[0], "mold": row[1], "image": row[2]})
+    rows.clear()
+
+    # Get new accessories from database
+    cursor.execute("SELECT DISTINCT brand, mold, image FROM inventory WHERE type = 'Accessory' ORDER BY id DESC LIMIT 12;")
+    rows = cursor.fetchall()
+    new_accessories = []
+    for row in rows:
+        print("accessories")
+        print(row)
+        new_accessories.append({"brand": row[0], "mold": row[1], "image": row[2]})
+    rows.clear()
     
     #Close database connection
     connection.close()
 
-    return render_template("index.html", disc_inventory=disc_inventory, new_releases=new_releases)
+    return render_template("index.html", disc_inventory=disc_inventory, new_releases=new_releases, new_apparel=new_apparel, new_accessories=new_accessories)
 
 
 @app.route("/search")

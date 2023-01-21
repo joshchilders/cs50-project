@@ -13,37 +13,41 @@
                 {% else %}
                     <img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
                 {% endif %}
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col flight-numbers">
-                            {{ items[0]["speed"] }}
-                        </div>
-                        <div class="col flight-numbers">
-                            {{ items[0]["glide"] }}
-                        </div>
-                        <div class="col flight-numbers">
-                            {{ items[0]["turn"] }}
-                        </div>
-                        <div class="col flight-numbers">
-                            {{ items[0]["fade"] }}
+                {% if items[0]['type'] != 'Apparel' and items[0]['type'] != 'Accessory' %}
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col flight-numbers">
+                                {{ items[0]["speed"] }}
+                            </div>
+                            <div class="col flight-numbers">
+                                {{ items[0]["glide"] }}
+                            </div>
+                            <div class="col flight-numbers">
+                                {{ items[0]["turn"] }}
+                            </div>
+                            <div class="col flight-numbers">
+                                {{ items[0]["fade"] }}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="dropdowns">
-                    <select class="form-select" id="plastic" aria-label="Default select example" onchange="updateRunOptions(runs); updateItemList();">
-                        <option selected>All Plastics</option>
-                        {% for plastic in plastics %}
-                            <option value="{{ plastic }}">{{ plastic }}</option>
-                        {% endfor %}
-                    </select>
-                    <select class="form-select" id="run" aria-label="Default select example" onchange="updateItemList();">
-                        <option selected>All Runs</option>
-                    </select>
-                </div>
+                    <div class="dropdowns">
+                        <select class="form-select" id="plastic" aria-label="Default select example" onchange="updateRunOptions(runs); updateItemList();">
+                            <option selected>All Plastics</option>
+                            {% for plastic in plastics %}
+                                <option value="{{ plastic }}">{{ plastic }}</option>
+                            {% endfor %}
+                        </select>
+                        <select class="form-select" id="run" aria-label="Default select example" onchange="updateItemList();">
+                            <option selected>All Runs</option>
+                        </select>
+                    </div>
+                {% endif %}
             </div>
             <div class="description">
                 <h2>{{ title }}</h2>
-                <h5>{{ items[0]["type"] }}</h5>
+                {% if items[0]['type'] != 'Apparel' and items[0]['type'] != 'Accessory' %}
+                    <h5>{{ items[0]["type"] }}</h5>
+                {% endif %}
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

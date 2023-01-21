@@ -119,13 +119,8 @@ hr {
     }
 }
 
-.card-body {
-    padding-top: 20px;
-}
-
 .card-body .container {
-    padding-top: 20px;
-    padding-bottom: 22px;
+    padding-bottom: 30px;
 }
 
 .card-title {
@@ -223,7 +218,6 @@ hr {
     grid-template-columns: 50% 50%;
     padding-left: 100px;
     padding-right: 100px;
-    transition: grid-template-columns 1s;
 }
 
 #search-by-flight-form {
@@ -231,6 +225,7 @@ hr {
     padding-right: 100px;
     padding-top: 50px;
     margin-top: 40px;
+    z-index: 2;
     transition: width 1s;
 }
 
@@ -256,7 +251,7 @@ hr {
     width: 100%;
     background-color: white;
     border-radius: 20px;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .search-by-flight-results {
@@ -319,6 +314,15 @@ hr {
         width: 100%;
         height: auto;
     }
+}
+
+#featured-apparel img, #featured-accessories img {
+    width: 300px;
+    height: 300px;
+}
+
+#featured-apparel button, #featured-accessories button {
+    
 }
 
 #search-heading h3, #search-heading h1 {
@@ -430,8 +434,8 @@ hr {
     margin-bottom: 10px;
 }
 
-.description h5 {
-    margin-bottom: 20px;
+.description p {
+    margin-top: 30px;
 }
 
 @media (min-width: 1000px) {
@@ -479,14 +483,26 @@ hr {
     margin: 20px auto;
 }
 
-.footer-info {
-    text-align: center;
-}
-
 footer {
     color: white;
     background-color: #d89216;
     padding-top: 40px;
+}
+
+.social-icons {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.social-icons a {
+    margin: auto 20px;
+    text-decoration: none;
+    outline: none;
+}
+
+.footer-info {
+    margin-top: 50px;
+    text-align: center;
 }
 
 footer .nav-item {
