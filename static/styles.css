@@ -81,8 +81,20 @@ hr {
     content: none;
 }
 
+.navbar-nav .nav-item {
+    margin: auto;
+    text-align: center;
+}
+
+.dropdown-menu {
+    left: 50%;
+    right: auto;
+    text-align: center;
+    transform: translate(-50%, 0);
+}
+
 @media (min-width: 1200px) {
-    .dropdown:hover .dropdown-menu {
+    .dropdown-center:hover .dropdown-menu {
         display: block;
     }
 
@@ -92,16 +104,6 @@ hr {
 }
 
 @media (max-width: 1199px) {
-    .navbar-nav .nav-item {
-        margin: auto;
-        text-align: center;
-    }
-
-    .dropdown-menu {
-        margin: auto;
-        text-align: center;
-    }
-
     .collapse form {
         width: 100%;
         max-width: 300px;
@@ -283,58 +285,67 @@ hr {
 }
 
 #team-profiles {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: -40px;
 }
 
 #team-profiles h1 {
-    padding-bottom: 75px;
-    padding-top: 20px;
+    margin-bottom: 60px;
 }
 
 #team-profiles .card {
+    color: black;
     width: 15%;
-    max-width: 600px;
     height: auto;
+    margin: auto;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+
+#team-profiles .card-img-top {
+    padding: 10px 0;
+}
+
+#team-profiles img {
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+#team-profiles .card-title {
+    margin-top: -10px;
+    border-bottom: solid 1px black;
+}
+
+#team-profiles .card-text {
     padding-top: 10px;
 }
 
-@media (max-width: 1600px) and (min-width: 1200px) {
-    #team-profiles .card {
-        width: 18%;
-        height: auto;
-    }
+#team-profiles .card:hover {
+    transform: scale(1.05);
 }
 
-@media (max-width: 1200px) and (min-width: 1000px) {
-    #team-profiles .card {
-        width: 23%;
-        height: auto;
-    }
-}
-
-@media (max-width: 1000px) and (min-width: 720px) {
+@media (max-width: 1600px) and (min-width: 1001px) {
     #team-profiles .card {
         width: 30%;
         height: auto;
     }
 }
 
-@media (max-width: 720px) and (min-width: 500px) {
+@media (max-width: 1000px) and (min-width: 601px) {
     #team-profiles .card {
         width: 45%;
         height: auto;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     #team-profiles .card {
         width: 100%;
-        height: auto;
     }
 }
 
-#featured-apparel .card, #featured-accessories .card {
+#featured-apparel .card, #featured-accessories .card, #team-profiles .card {
     display: flex;
     align-items: center;
     justify-content: center;

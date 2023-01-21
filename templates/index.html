@@ -93,7 +93,7 @@
 				<section class="disc-row">
 					<div class="row">
 						{% for disc in disc_inventory %}
-							<div class="card no-border" id="search-result">
+							<div class="card no-border hover2" id="search-result">
 								<form action="/item" method="get">
 									<input name="item" type="hidden" value="{{ disc['mold'] }}">
 									<button type="submit">
@@ -157,40 +157,46 @@
 	<div class="section color-background" id="team-profiles">
 		<h1>Team Profiles</h1>
 		<div class="row">
-			<div class="card no-border">
-				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
+			<div class="card no-border" id="kevin-jones-card">
+				<img src="../static/images/profiles/kevin-jones-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<h4 class="card-title center-text">Kevin Jones</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border">
-				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
+			<div class="card no-border" id="calvin-heimburg-card">
+				<img src="../static/images/profiles/calvin-heimburg-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<h4 class="card-title center-text">Calvin Heimburg</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border">
-				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
+			<div class="card no-border" id="paul-mcbeth-card">
+				<img src="../static/images/profiles/paul-mcbeth-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<h4 class="card-title center-text">Paul Mcbeth</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border">
-				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
+			<div class="card no-border" id="simon-lizotte-card">
+				<img src="../static/images/profiles/simon-lizotte-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<h4 class="card-title center-text">Simon Lizotte</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border">
-				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
+			<div class="card no-border" id="gannon-buhr-card">
+				<img src="../static/images/profiles/gannon-buhr-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<h4 class="card-title center-text">Gannon Buhr</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border">
-				<img src="../static/images/profiles/profile.jpg" class="card-img-top" alt="...">
+			<div class="card no-border" id="james-conrad-card">
+				<img src="../static/images/profiles/james-conrad-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+					<h4 class="card-title center-text">James Conrad</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
 		</div>
@@ -210,7 +216,7 @@
 								{% else %}
 									<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
 								{% endif %}
-								<p class="card-title">{{ item["run"] }} {{ item["mold"] }}</p>
+								<p class="card-title">{{ item["brand"] }} {{ item["mold"] }}</p>
 							</button>
 						</form>
 					</div>
