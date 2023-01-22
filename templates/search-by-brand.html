@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Search: {{ brand }}
+    {{ brand }}
 {% endblock %}
 
 {% block main %}
@@ -26,9 +26,9 @@
 									<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
 								{% endif %}
 								{% if disc['run'] == 'Stock' %}
-									<p class="card-title">{{ disc["plastic"] }} {{ disc["mold"] }}</p>
+									<h5 class="card-title">{{ disc["plastic"] }} {{ disc["mold"] }}</h5>
 								{% else %}
-									<p class="card-title">{{ disc["run"] }} {{ disc["plastic"] }} {{ disc["mold"] }}</p>
+									<h5 class="card-title">{{ disc["run"] }} {{ disc["plastic"] }} {{ disc["mold"] }}</h5>
 								{% endif %}
 							</button>
 						</form>

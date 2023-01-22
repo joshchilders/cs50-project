@@ -64,27 +64,27 @@
 	</div>
 
 	<div class="section color-background" id="search-by-flight">
-		<form id="search-by-flight-form">
+		<form action="/search" id="search-by-flight-form" method="POST">
 			<h1>Search By Flight</h1>
 			<div class="row">
 				<label for="speed" class="form-label"><h4>Speed: <output id="speed-output">Any</output></h4></label>
-				<input type="range" class="form-range" min="0" max="14" value="0" id="speed" oninput="updateSpeed()" onmouseup="updateSearch()">
+				<input type="range" class="form-range" min="0" max="14" value="0" name="speed" id="speed" oninput="updateSpeed()" onmouseup="updateSearch()">
 			</div>
 			<div class="row">
 				<label for="glide" class="form-label"><h4>Glide: <output id="glide-output">Any</output></h4></label>
-				<input type="range" class="form-range" min="0" max="8" value="0" id="glide" oninput="updateGlide()" onmouseup="updateSearch()">
+				<input type="range" class="form-range" min="0" max="8" value="0" name="glide" id="glide" oninput="updateGlide()" onmouseup="updateSearch()">
 			</div>
 			<div class="row">
 				<label for="turn" class="form-label"><h4>Turn: <output id="turn-output">Any</output> </h4></label>
-				<input type="range" class="form-range" min="-6" max="2" value="-6" id="turn" oninput="updateTurn()" onmouseup="updateSearch()">
+				<input type="range" class="form-range" min="-6" max="2" value="-6" name="turn" id="turn" oninput="updateTurn()" onmouseup="updateSearch()">
 			</div>
 			<div class="row">
 				<label for="fade" class="form-label"><h4>Fade: <output id="fade-output">Any</output></h4></label>
-				<input type="range" class="form-range" min="-1" max="6" value="-1" id="fade" oninput="updateFade()" onmouseup="updateSearch()">
+				<input type="range" class="form-range" min="-1" max="6" value="-1" name="fade" id="fade" oninput="updateFade()" onmouseup="updateSearch()">
 			</div>
 			<div class="row">
 				<div class="d-grid gap-2 col-6 mx-auto" id="btn-col">
-					<button type="button" class="btn btn-secondary btn-lg" id="find-more-btn">Find More ></button>
+					<button type="submit" class="btn btn-secondary btn-lg" id="find-more-btn">Find More ></button>
 				</div>
 			</div>
 		</form>
@@ -156,46 +156,88 @@
 
 	<div class="section color-background" id="team-profiles">
 		<h1>Team Profiles</h1>
-		<div class="row">
-			<div class="card no-border" id="kevin-jones-card">
+		<div class="team-profiles-scroller" id="team-profiles-scroller">
+			<div class="card no-border profile-card" id="kevin-jones-card">
 				<img src="../static/images/profiles/kevin-jones-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h4 class="card-title center-text">Kevin Jones</h4>
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" id="calvin-heimburg-card">
+			<div class="card no-border profile-card" id="calvin-heimburg-card">
 				<img src="../static/images/profiles/calvin-heimburg-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h4 class="card-title center-text">Calvin Heimburg</h4>
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" id="paul-mcbeth-card">
+			<div class="card no-border profile-card" id="paul-mcbeth-card">
 				<img src="../static/images/profiles/paul-mcbeth-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h4 class="card-title center-text">Paul Mcbeth</h4>
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" id="simon-lizotte-card">
+			<div class="card no-border profile-card" id="simon-lizotte-card">
 				<img src="../static/images/profiles/simon-lizotte-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h4 class="card-title center-text">Simon Lizotte</h4>
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" id="gannon-buhr-card">
+			<div class="card no-border profile-card" id="gannon-buhr-card">
 				<img src="../static/images/profiles/gannon-buhr-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h4 class="card-title center-text">Gannon Buhr</h4>
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>
-			<div class="card no-border" id="james-conrad-card">
+			<div class="card no-border profile-card" id="james-conrad-card">
 				<img src="../static/images/profiles/james-conrad-profile.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
 					<h4 class="card-title center-text">James Conrad</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+			<div class="card no-border profile-card" id="drew-gibson-card">
+				<img src="../static/images/profiles/drew-gibson-profile.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h4 class="card-title center-text">Drew Gibson</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+			<div class="card no-border profile-card" id="anthony-barela-card">
+				<img src="../static/images/profiles/anthony-barela-profile.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h4 class="card-title center-text">Anthony Barela</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+			<div class="card no-border profile-card" id="eagle-mcmahon-card">
+				<img src="../static/images/profiles/eagle-mcmahon-profile.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h4 class="card-title center-text">Eagle Mcmahon</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+			<div class="card no-border profile-card" id="ricky-wysocki-card">
+				<img src="../static/images/profiles/ricky-wysocki-profile.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h4 class="card-title center-text">Ricky Wysocki</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+			<div class="card no-border profile-card" id="kyle-klein-card">
+				<img src="../static/images/profiles/kyle-klein-profile.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h4 class="card-title center-text">Kyle Klein</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+			<div class="card no-border profile-card" id="garrett-gurthie-card">
+				<img src="../static/images/profiles/garrett-gurthie-profile.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h4 class="card-title center-text">Garrett Gurthie</h4>
 					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 				</div>
 			</div>

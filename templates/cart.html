@@ -5,5 +5,44 @@
 {% endblock %}
 
 {% block main %}
+    <script>
+        let item = JSON.parse('{{ item | tojson | safe }}');
+    </script>
 
+    <div class="section color-background" id="search-heading">
+        <h1>Your Cart</h1>
+    </div>
+
+    <div class="section white-background" id="cart-list">
+        <section class="disc-row">
+            <div class="row" id="cart-row">
+                <div class="card center-text" id="item">
+                    <div class="card-header">
+                        {% if item['image'] is not none %}
+                            <img src="{{ item['image'] }}" class="card-img-top" alt="...">
+                        {% else %}
+                            <img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush fs-5">
+                            {% if item["plastic"] != None %}
+                                <li class="list-group-item fs-6" id="item-plastic">{{ item["plastic"] }}</li>
+                            {% endif %}
+                            {% if item["run"] != None %}
+                                <li class="list-group-item fs-6" id="item-run">{{ item["run"] }}</li>
+                            {% endif %}
+                            {% if item["weight"] != None %}
+                                <li class="list-group-item fs-6" id="item-weight">{{ item["weight"] }}g</li>
+                            {% endif %}
+                            {% if item["price"] != None %}
+                                <li class="list-group-item fs-6" id="item-price"><b>${{ item["price"] }}</b></li>
+                            {% endif %}
+                            <button class="btn btn-danger" name="id" value="{{ item['id'] }}">Remove</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 {% endblock %}

@@ -1,3 +1,5 @@
+@import "https://unpkg.com/open-props";
+
 .center-text {
     text-align: center;
 }
@@ -86,16 +88,16 @@ hr {
     text-align: center;
 }
 
-.dropdown-menu {
-    left: 50%;
-    right: auto;
-    text-align: center;
-    transform: translate(-50%, 0);
-}
-
 @media (min-width: 1200px) {
     .dropdown-center:hover .dropdown-menu {
         display: block;
+    }
+
+    .dropdown-menu {
+        left: 50%;
+        right: auto;
+        text-align: center;
+        transform: translate(-50%, 0);
     }
 
     #mobile-cart-icon {
@@ -112,6 +114,12 @@ hr {
         padding-bottom: 20px;
     }
 
+    .dropdown-menu {
+        left: 50%;
+        right: auto;
+        text-align: center;
+    }
+
     #cart-icon, #search-icon, .col-auto {
         display: none;
     }
@@ -119,6 +127,10 @@ hr {
     #mobile-cart-icon {
         display: block;
     }
+}
+
+.carousel {
+    margin-top: 50px;
 }
 
 .card-title {
@@ -284,10 +296,43 @@ hr {
     }
 }
 
+.team-profiles-scroller {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 350px;
+    overflow-x: scroll;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+}
+
+.team-profiles-scroller::-webkit-scrollbar {
+    height: 15px;
+    opacity: 0.5;
+    margin: 0 20px;
+}
+
+.team-profiles-scroller::-webkit-scrollbar-thumb:hover {
+    transform: scale(1.05);
+}
+  
+.team-profiles-scroller::-webkit-scrollbar-track {
+    background: #eee;
+}
+  
+.team-profiles-scroller::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: #374045;
+    background-image: linear-gradient(to top, #374045 0%, black 100%);
+    transition: transform 0.5s;
+}
+
+.team-profiles-scroller > * {
+    scroll-snap-align: center;
+}
+
 #team-profiles {
-    padding-left: 40px;
-    padding-right: 40px;
-    margin-bottom: -40px;
+    margin-bottom: -30px;
+    overflow: hidden;
 }
 
 #team-profiles h1 {
@@ -295,19 +340,21 @@ hr {
 }
 
 #team-profiles .card {
+    display: grid;
     color: black;
-    width: 15%;
+    max-inline-size: 400px;
     height: auto;
-    margin: auto;
+    margin: var(--size-3);
     margin-bottom: 50px;
     transition: transform 0.5s;
 }
 
 #team-profiles .card-img-top {
-    padding: 10px 0;
+    padding: 10px;
 }
 
 #team-profiles img {
+    inline-size: 100%;
     object-fit: cover;
     aspect-ratio: 1 / 1;
 }
@@ -325,7 +372,7 @@ hr {
     transform: scale(1.05);
 }
 
-@media (max-width: 1600px) and (min-width: 1001px) {
+/* @media (max-width: 1600px) and (min-width: 1001px) {
     #team-profiles .card {
         width: 30%;
         height: auto;
@@ -343,7 +390,7 @@ hr {
     #team-profiles .card {
         width: 100%;
     }
-}
+} */
 
 #featured-apparel .card, #featured-accessories .card, #team-profiles .card {
     display: flex;
@@ -360,6 +407,27 @@ hr {
 #search-heading h3, #search-heading h1 {
     padding-top: 55px;
     margin-bottom: -30px;
+}
+
+#search-results .card-body {
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+#search-results .card-title {
+    padding-top: 20px;
+}
+
+#search-results .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-results .card img {
+    object-fit: cover;
+    max-width: 300px;
+    max-height: 300px;
 }
 
 #out-of-stock-img {
@@ -517,9 +585,23 @@ hr {
     padding-top: 10px;
 }
 
+#item-list button {
+    width: 100%;
+    background-color: #0275d8;
+}
+
+#item-list button:hover, #cart-list button:hover {
+    opacity: 0.8;
+}
+
 #item-list .card {
     width: 250px;
     margin: 20px auto;
+}
+
+#cart-list button {
+    width: 100%;
+    background-color: #d9534f;
 }
 
 footer {
@@ -545,7 +627,7 @@ footer {
 }
 
 footer .nav-item {
-    padding: 25px 10px;
+    padding: 10px;
 }
 
 footer .nav-link:hover {

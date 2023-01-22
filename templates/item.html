@@ -1,15 +1,15 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    {{ items[0]["brand"] }}{{ items[0]["mold"] }}
+    {{ title }}
 {% endblock %}
 
 {% block main %}
     <div class="item-header-background">
         <div class="section white-background item-header">
             <div class="thumbnail">
-                {% if items[0]['image'] is not none %}
-                    <img src="{{ items[0]['image'] }}" class="card-img-top" alt="...">
+                {% if thumbnail is not none %}
+                    <img src="{{ thumbnail }}" class="card-img-top" alt="...">
                 {% else %}
                     <img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
                 {% endif %}
@@ -44,7 +44,7 @@
                 {% endif %}
             </div>
             <div class="description">
-                <h2>{{ title }}</h2>
+                <h2 id="item-title">{{ title }}</h2>
                 {% if items[0]['type'] != 'Apparel' and items[0]['type'] != 'Accessory' %}
                     <h5>{{ items[0]["type"] }}</h5>
                 {% endif %}
@@ -70,26 +70,36 @@
     <div class="section white-background" id="item-list">
         <section class="disc-row">
 			<div class="row">
-				{% for disc in items %}
+                {% for item in items %}
                     <div class="card center-text" id="item">
                         <div class="card-header">
-                            {% if disc['image'] is not none %}
-				                <img src="{{ disc['image'] }}" class="card-img-top" alt="...">
-			                {% else %}
-				                <img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
-			                {% endif %}
+                            {% if item['image'] is not none %}
+                                <img src="{{ item['image'] }}" class="card-img-top" id="item-image" alt="...">
+                            {% else %}
+                                <img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
+                            {% endif %}
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush fs-5">
-                                <li class="list-group-item fs-6" id="item-plastic">{{ disc["plastic"] }}</li>
-                                <li class="list-group-item fs-6" id="item-run">{{ disc["run"] }}</li>
-                                <li class="list-group-item fs-6" id="item-weight">{{ disc["weight"] }}g</li>
-                                <li class="list-group-item fs-6" id="item-price">${{ disc["price"] }}</li>
-                                <a href="/cart" class="btn btn-primary">Add to Cart</a>
+                                {% if item["plastic"] != None %}
+                                    <li class="list-group-item fs-6" id="item-plastic">{{ item["plastic"] }}</li>
+                                {% endif %}
+                                {% if item["run"] != None %}
+                                    <li class="list-group-item fs-6" id="item-run">{{ item["run"] }}</li>
+                                {% endif %}
+                                {% if item["weight"] != None %}
+                                    <li class="list-group-item fs-6" id="item-weight">{{ item["weight"] }}g</li>
+                                {% endif %}
+                                {% if item["price"] != None %}
+                                    <li class="list-group-item fs-6" id="item-price">${{ item["price"] }}</li>
+                                {% endif %}
+                                <form action="/cart" method="POST">
+                                    <button type="submit" class="btn btn-primary" name="id" value="{{ item['id'] }}">Add to Cart</a>
+                                </form>
                             </ul>
                         </div>
                     </div>
-				{% endfor %}
+                {% endfor %}
 			</div>
 		</section>
     </div>
