@@ -302,13 +302,12 @@ hr {
     grid-auto-columns: 350px;
     overflow-x: scroll;
     overscroll-behavior-inline: contain;
-    scroll-snap-type: inline mandatory;
+    margin-bottom: 20px;
 }
 
 .team-profiles-scroller::-webkit-scrollbar {
     height: 15px;
     opacity: 0.5;
-    margin: 0 20px;
 }
 
 .team-profiles-scroller::-webkit-scrollbar-thumb:hover {
@@ -326,17 +325,13 @@ hr {
     transition: transform 0.5s;
 }
 
-.team-profiles-scroller > * {
-    scroll-snap-align: center;
-}
-
 #team-profiles {
     margin-bottom: -30px;
     overflow: hidden;
 }
 
 #team-profiles h1 {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 #team-profiles .card {
@@ -371,26 +366,6 @@ hr {
 #team-profiles .card:hover {
     transform: scale(1.05);
 }
-
-/* @media (max-width: 1600px) and (min-width: 1001px) {
-    #team-profiles .card {
-        width: 30%;
-        height: auto;
-    }
-}
-
-@media (max-width: 1000px) and (min-width: 601px) {
-    #team-profiles .card {
-        width: 45%;
-        height: auto;
-    }
-}
-
-@media (max-width: 600px) {
-    #team-profiles .card {
-        width: 100%;
-    }
-} */
 
 #featured-apparel .card, #featured-accessories .card, #team-profiles .card {
     display: flex;
@@ -428,6 +403,11 @@ hr {
     object-fit: cover;
     max-width: 300px;
     max-height: 300px;
+}
+
+#search-results .run-title {
+    margin-top: 15px;
+    margin-bottom: 8px;
 }
 
 #out-of-stock-img {
@@ -623,13 +603,19 @@ footer {
 
 .footer-info {
     margin-top: 50px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 footer .nav-item {
     padding: 10px;
+    margin-bottom: 20px;
 }
 
 footer .nav-link:hover {
     text-decoration: underline;
+}
+
+.footer-info p {
+    margin: 5px 0;
 }

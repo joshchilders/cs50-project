@@ -22,39 +22,76 @@
         <section class="disc-row">
 			<div class="row">
 				{% for disc in results %}
-					<div class="card no-border hover2">
-						<form action="/item" method="get">
-							<input name="item" type="hidden" value="{{ disc['mold'] }}">
-							<button type="submit">
-								{% if disc['image'] is not none %}
-									<img src="{{ disc['image'] }}" class="card-img-top" alt="...">
-								{% else %}
-									<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
-								{% endif %}
-								<h5 class="card-title">{{ disc["brand"] }} {{ disc["mold"] }}</h5>
-							</button>
-						</form>
-						{% if disc["speed"] != None %}
-							<div class="card-body">
-								<div class="container text-center">
-									<div class="row">
-										<div class="col flight-numbers">
-											<p id="disc-speed">{{ disc["speed"] }}</p>
-										</div>
-										<div class="col flight-numbers">
-											<p id="disc-glide">{{ disc["glide"] }}</p>
-										</div>
-										<div class="col flight-numbers">
-											<p id="disc-turn">{{ disc["turn"] }}</p>
-										</div>
-										<div class="col flight-numbers">
-											<p id="disc-fade">{{ disc["fade"] }}</p>
+					{% if disc['plastic'] %}
+						<div class="card no-border hover">
+							<form action="/item" method="get">
+								<input name="item" type="hidden" value="{{ disc['mold'] }}">
+								<button type="submit">
+									{% if disc['image'] is not none %}
+										<img src="{{ disc['image'] }}" class="card-img-top" alt="...">
+									{% else %}
+										<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
+									{% endif %}
+										<p class="card-title">{% if disc['run'] != 'Stock' %}{{ disc['run'] }}{% endif %} {{ disc['plastic'] }}</p>
+								</button>
+							</form>
+							{% if disc["speed"] != None %}
+								<div class="card-body">
+									<div class="container text-center">
+										<p class="run-title">{{ disc["brand"] }} {{ disc["mold"] }}</p>
+										<div class="row">
+											<div class="col flight-numbers">
+												<p id="disc-speed">{{ disc["speed"] }}</p>
+											</div>
+											<div class="col flight-numbers">
+												<p id="disc-glide">{{ disc["glide"] }}</p>
+											</div>
+											<div class="col flight-numbers">
+												<p id="disc-turn">{{ disc["turn"] }}</p>
+											</div>
+											<div class="col flight-numbers">
+												<p id="disc-fade">{{ disc["fade"] }}</p>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						{% endif %}
-					</div>
+							{% endif %}
+						</div>
+					{% else %}
+						<div class="card no-border hover2">
+							<form action="/item" method="get">
+								<input name="item" type="hidden" value="{{ disc['mold'] }}">
+								<button type="submit">
+									{% if disc['image'] is not none %}
+										<img src="{{ disc['image'] }}" class="card-img-top" alt="...">
+									{% else %}
+										<img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
+									{% endif %}
+										<p class="card-title">{{ disc["brand"] }} {{ disc["mold"] }}</p>
+								</button>
+							</form>
+							{% if disc["speed"] != None %}
+								<div class="card-body">
+									<div class="container text-center">
+										<div class="row">
+											<div class="col flight-numbers">
+												<p id="disc-speed">{{ disc["speed"] }}</p>
+											</div>
+											<div class="col flight-numbers">
+												<p id="disc-glide">{{ disc["glide"] }}</p>
+											</div>
+											<div class="col flight-numbers">
+												<p id="disc-turn">{{ disc["turn"] }}</p>
+											</div>
+											<div class="col flight-numbers">
+												<p id="disc-fade">{{ disc["fade"] }}</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							{% endif %}
+						</div>
+					{% endif %}
 				{% endfor %}
 			</div>
 		</section>

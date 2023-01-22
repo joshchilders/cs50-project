@@ -39,8 +39,6 @@ def index():
     rows = cursor.fetchall()
     new_releases = []
     for row in rows:
-        print("discs")
-        print(row)
         new_releases.append({"plastic": row[1], "mold": row[0], "run": row[2], "image": row[3]})
     rows.clear()
     
@@ -49,8 +47,6 @@ def index():
     rows = cursor.fetchall()
     new_apparel = []
     for row in rows:
-        print("apparel")
-        print(row)
         new_apparel.append({"brand": row[0], "mold": row[1], "image": row[2]})
     rows.clear()
 
@@ -59,8 +55,6 @@ def index():
     rows = cursor.fetchall()
     new_accessories = []
     for row in rows:
-        print("accessories")
-        print(row)
         new_accessories.append({"brand": row[0], "mold": row[1], "image": row[2]})
     rows.clear()
     
@@ -80,7 +74,7 @@ def search():
         # Query database for search value
         connection = sqlite3.connect("inventory.db")
         cursor = connection.cursor()
-        cursor.execute("SELECT DISTINCT brand, mold, plastic, run, speed, glide, turn, fade, image FROM inventory WHERE mold LIKE ?", [search])
+        cursor.execute("SELECT DISTINCT brand, mold, plastic, run, speed, glide, turn, fade, image FROM inventory WHERE mold LIKE ? OR run LIKE ? OR brand LIKE ? OR type LIKE ? ORDER BY mold", (f"%{search}%", f"%{search}%", f"%{search}%", f"%{search}%"))
         rows = cursor.fetchall()
 
         # Get number of results
@@ -144,7 +138,6 @@ def search():
         connection = sqlite3.connect("inventory.db")
         cursor = connection.cursor()
         query = f"{fade_query} AND mold IN ({turn_query} AND mold IN ({glide_query} AND mold IN ({speed_query}))) GROUP BY mold"
-        print(query)
         cursor.execute(query)
         rows = cursor.fetchall()
 
@@ -169,16 +162,18 @@ def search_by_type():
     connection = sqlite3.connect("inventory.db")
     cursor = connection.cursor()
     if type == "All Discs":
-        cursor.execute("SELECT max(mold), brand, speed, glide, turn, fade, image FROM inventory WHERE type != 'Apparel' AND type != 'Accessory' GROUP BY mold")
+        cursor.execute("SELECT max(mold), brand, plastic, run, speed, glide, turn, fade, image FROM inventory WHERE type != 'Apparel' AND type != 'Accessory' GROUP BY mold, plastic, run")
+        rows = cursor.fetchall()
+        results = []
+        for row in rows:
+            results.append({"brand": row[1], "mold": row[0], "plastic": row[2], "run": row[3], "speed": row[4], "glide": row[5], "turn": row[6], "fade": row[7], "image": row[8]})
     else:
         cursor.execute("SELECT max(mold), brand, speed, glide, turn, fade, image FROM inventory WHERE type = ? GROUP BY mold", [type])
-    rows = cursor.fetchall()
+        rows = cursor.fetchall()
+        results = []
+        for row in rows:
+            results.append({"brand": row[1], "mold": row[0], "speed": row[2], "glide": row[3], "turn": row[4], "fade": row[5], "image": row[6]})
 
-    # Organize results into a list
-    results = []
-    for row in rows:
-        results.append({"brand": row[1], "mold": row[0], "speed": row[2], "glide": row[3], "turn": row[4], "fade": row[5], "image": row[6]})
-    
     # Close database connection
     connection.close()
 
@@ -274,7 +269,6 @@ def cart():
         cursor.execute("SELECT brand, mold, plastic, run, weight, price, image FROM inventory WHERE id = ?", [item_id])
         row = cursor.fetchone()
         item = {"brand": row[0], "mold": row[1], "plastic": row[2], "run": row[3], "weight": row[4], "price": row[5], "image": row[6]}
-        print(item)
         connection.close()
 
         return render_template("cart.html", item=item)
