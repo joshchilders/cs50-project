@@ -2,7 +2,7 @@ import sqlite3
 
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
-from flask import Flask, redirect, request, render_template, request
+from flask import Flask, redirect, request, render_template, url_for
 
 # Configure application
 app = Flask(__name__)
@@ -261,18 +261,57 @@ def cart():
 
     # Add item to cart
     if request.method == "POST":
+
+        if not session.get("cart"):
+            session["cart"] = []
         item_id = request.form.get("id")
 
         # Get item info from database
         connection = sqlite3.connect("inventory.db")
         cursor = connection.cursor()
-        cursor.execute("SELECT brand, mold, plastic, run, weight, price, image FROM inventory WHERE id = ?", [item_id])
+        cursor.execute("SELECT id, brand, mold, plastic, run, weight, price, image FROM inventory WHERE id = ?", [item_id])
         row = cursor.fetchone()
-        item = {"brand": row[0], "mold": row[1], "plastic": row[2], "run": row[3], "weight": row[4], "price": row[5], "image": row[6]}
+        item = {"id": row[0], "brand": row[1], "mold": row[2], "plastic": row[3], "run": row[4], "weight": row[5], "price": row[6], "image": row[7]}
+        session["cart"].append(item)
         connection.close()
 
-        return render_template("cart.html", item=item)
+        return redirect(url_for("cart"))
     
     if request.method == "GET":
+
+        if not session.get("cart"):
+            cart = []
+        else:
+            cart = session.get("cart", None)
+
+        # Get total price
+        total = 0
+        for item in cart:
+            total += item["price"]
+        total = round(total, 2)
         
-        return render_template("cart.html")
+        return render_template("cart.html", cart=cart, total=total)
+
+
+@app.route("/remove", methods=["POST"])
+def remove():
+
+    item_id = int(request.form.get("id"))
+
+    # Remove item from cart
+    cart = []
+    for i in range(len(session["cart"])):
+        if session["cart"][i]["id"] == item_id:
+            del session["cart"][i]
+            break
+
+    return redirect(url_for("cart"))
+
+
+@app.route("/checkout", methods=["POST"])
+def checkout():
+
+    # Empty cart
+    session.clear()
+
+    return redirect(url_for("index"))
