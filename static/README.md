@@ -25,6 +25,7 @@ For discs, that includes the following columns:
 - fade
 - price
 - image
+
 To make my life a little bit easier, I created a csv file from google sheets with a plethora of products that I could use.
 I then made a python program called **import.py** that would read the information from this csv file and import it straight into my database.
 This just served to make the database population a little bit easier.
