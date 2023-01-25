@@ -313,5 +313,6 @@ def checkout():
 
     # Empty cart
     session.clear()
+    flash('Your order is on its way!')
 
     return redirect(url_for("index"))
