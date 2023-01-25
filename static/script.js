@@ -1,5 +1,4 @@
 document.getElementById('navbar-toggler').addEventListener('click', showMobileCartIcon);
-document.addEventListener("touchstart", function(){}, true);
 
 window.onload = function() {
     // Get all disc cards
@@ -155,47 +154,6 @@ function updateRunOptions(runs) {
         let newOption = new Option('All Runs', 'All Runs');
         select.add(newOption, undefined);
     }
-}
-
-let cart = [];
-function updateCart(cart) {
-
-    let title = document.getElementById('item-title').innerHTML;
-    let plastic = document.getElementById('item-plastic').innerHTML;
-    let run = document.getElementById('item-run').innerHTML;
-    let weight = document.getElementById('item-weight').innerHTML;
-    let price = document.getElementById('item-price').innerHTML;
-    let image = document.getElementById('item-image').src;
-    
-    cart.push({"title": title, "plastic": plastic, "run": run, "weight": weight, "price": price, "image": image});
-
-    /*
-    <div class="card center-text" id="item">
-        <div class="card-header">
-            {% if item['image'] is not none %}
-                <img src="{{ item['image'] }}" class="card-img-top" alt="...">
-            {% else %}
-                <img src="../static/images/discs/disc-placeholder.jpg" class="card-img-top" alt="...">
-            {% endif %}
-        </div>
-        <div class="card-body">
-            <ul class="list-group list-group-flush fs-5">
-                {% if item["plastic"] != None %}
-                    <li class="list-group-item fs-6" id="item-plastic">{{ item["plastic"] }}</li>
-                {% endif %}
-                {% if item["run"] != None %}
-                    <li class="list-group-item fs-6" id="item-run">{{ item["run"] }}</li>
-                {% endif %}
-                {% if item["weight"] != None %}
-                    <li class="list-group-item fs-6" id="item-weight">{{ item["weight"] }}g</li>
-                {% endif %}
-                {% if item["price"] != None %}
-                    <li class="list-group-item fs-6" id="item-price"><b>${{ item["price"] }}</b></li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-    */
 }
 
 function showMobileCartIcon() {

@@ -63,7 +63,8 @@ Every distinct item is displayed in another list of cards containing the item's 
 ###### Search By Flight
 For this section, the program starts by reading every unique disc mold currently in inventory.
 I render each of those discs onto the home page but also hide them from view.
-Once a value on any of the range sliders is changed, there is a javascript function that shrinks the form section and displays the first 6 molds currently in inventory that match the search.
+Once a value on any of the range sliders is changed, there is a javascript function that shrinks the form section, and then searches for and displays the first 6 molds currently in inventory with values that match the search.
+There is also another javascript function that controls how the results on the right fade in, making the site feel a little more smooth and responsive.
 The "Find More >" button redirects to the search page with a specific SQL query with the values given in the form.
 This is intended for when there are more than 6 results in inventory (which there most likely would be for an actual retailer with thousands upon thousands of discs).
 In theory, this is to make it easier to find discs by their flight characteristics.
@@ -103,5 +104,5 @@ In an actual ecommerce website, of course the checking out would include enterin
 ##### Responsive
 The website is fully responsive on every page, allowing for ease of use on any device.
 The item lists shrink down and display less on each row whenever necessary, and the navbar collapses using a bootstrap template.
-On smaller screens, when the navbar collpases the shopping cart link is moved to the bottom left of the screen and only appears when the collapsed navbar is expanded.
+On smaller screens, when the navbar collpases the shopping cart link is moved to the bottom left of the screen and, thanks to a javascript function, only appears when the collapsed navbar is expanded.
 This keeps the navbar looking clean while keeping the cart icon out of the way while not in use.
